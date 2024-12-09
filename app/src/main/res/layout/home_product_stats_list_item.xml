@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="productWithStatistic"
+            type="com.mobile_programming.sari_sari_inventory_app.ui.home.ProductWithStatistic" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/product_stats_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_product_stats_card_height"
+        android:layout_margin="@dimen/padding_small"
+        app:strokeWidth="0dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/product_image"
+                android:layout_width="@dimen/home_product_stats_image_height"
+                android:layout_height="@dimen/home_product_stats_image_height"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/no_product_image"
+                android:padding="@dimen/padding_small"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_no_image_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+
+            <TextView
+                android:id="@+id/product_name"
+                style="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/non_existing_product"
+                android:textColor="?attr/colorOutlineVariant"
+                app:layout_constraintBottom_toTopOf="@id/product_number"
+                app:layout_constraintEnd_toStartOf="@id/description_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/product_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/product_number"
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/no_product_number"
+                android:textColor="?attr/colorOutlineVariant"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/description_end_guideline"
+                app:layout_constraintStart_toStartOf="@id/product_name"
+                app:layout_constraintTop_toBottomOf="@id/product_name" />
+
+            <TextView
+                android:id="@+id/product_statistic"
+                style="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_medium"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/description_end_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

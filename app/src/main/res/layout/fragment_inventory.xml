@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mobile_programming.sari_sari_inventory_app.ui.inventory.InventoryViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_bar_height_medium"
+                android:fitsSystemWindows="true"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:title="@string/inventory"
+                app:titleCentered="true" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!-- Search bar uses TextInputLayout instead of SearchBar -->
+            <!-- Since we don't need to use a SearchView -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchBar"
+                style="?attr/textInputOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/padding_small"
+                android:layout_marginStart="@dimen/padding_medium"
+                app:layout_constraintWidth_max="@dimen/max_text_field_width"
+                app:boxBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:boxStrokeWidth="0dp"
+                app:endIconContentDescription="@string/search_bar_clear_content_desc"
+                app:endIconDrawable="@drawable/baseline_clear_24"
+                app:endIconMode="clear_text"
+                app:hintEnabled="false"
+                app:layout_constraintBottom_toTopOf="@id/inventoryRecyclerView"
+                app:layout_constraintEnd_toStartOf="@id/sortMenuButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraLarge"
+                app:startIconContentDescription="@string/inventory_search_content_desc"
+                app:startIconDrawable="@drawable/baseline_search_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/inventory_search_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="@dimen/padding_medium"
+                    android:text="@{viewModel.uiState.searchBarState.searchQuery}"
+                    android:textAppearance="@style/TextAppearance.Material3.SearchBar" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/sortMenuButton"
+                android:layout_width="@dimen/icon_medium"
+                android:layout_height="@dimen/icon_medium"
+                android:layout_marginStart="@dimen/padding_medium"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:adjustViewBounds="true"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/sort_menu_content_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/baseline_sort_24"
+                app:layout_constraintBottom_toBottomOf="@id/searchBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/searchBar"
+                app:layout_constraintTop_toTopOf="@id/searchBar"
+                app:tint="?attr/colorOnSurface" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/inventoryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchBar"
+                tools:itemCount="20"
+                tools:listitem="@layout/inventory_list_item" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bot_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height_large"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="end"
+            app:fabAnimationMode="slide"
+            app:fabAnchorMode="cradle"
+            app:fabCradleVerticalOffset="@dimen/fab_bottom_app_bar_vert_margin"
+            app:hideOnScroll="true"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <!-- Bottom Navigation -->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bot_nav_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_bar_height_large"
+                app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+                app:menu="@menu/bottom_navigation_menu"
+                app:elevation="0dp"/>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <!-- Floating Action Button -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addProductFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/new_product_fab_content_desc"
+            app:srcCompat="@drawable/baseline_add_24"
+            app:layout_anchor="@id/bot_app_bar"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

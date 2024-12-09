@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mobile_programming.sari_sari_inventory_app.ui.product.ProductDetailsViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_bar_height_medium"
+                android:fitsSystemWindows="true"
+                android:minHeight="?attr/actionBarSize"
+                app:menu="@menu/product_details_top_app_bar_menu"
+                app:navigationIcon="@{viewModel.uiState.editing ? @drawable/baseline_clear_24 : @drawable/baseline_arrow_back_24}"
+                app:navigationIconTint="?attr/colorOnSurface" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/padding_large"
+                android:layout_marginVertical="@dimen/padding_medium">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/product_image"
+                    android:layout_width="@dimen/entry_image_size"
+                    android:layout_height="@dimen/entry_image_size"
+                    android:background="@drawable/dashed_line_border"
+                    android:backgroundTint="?attr/colorOutline"
+                    android:contentDescription="@string/new_product_image_content_desc"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseline_camera_alt_24"
+                    app:contentPadding="@dimen/padding_extra_large"
+                    app:layout_constraintStart_toStartOf="@id/product_number_field"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large" />
+
+                <Button
+                    android:id="@+id/add_photo_button"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{viewModel.uiState.editing}"
+                    android:text="@string/change_product_image"
+                    app:layout_constraintBottom_toTopOf="@id/remove_photo_button"
+                    app:layout_constraintEnd_toEndOf="@id/remove_photo_button"
+                    app:layout_constraintStart_toStartOf="@id/remove_photo_button"
+                    app:layout_constraintTop_toTopOf="@id/product_image" />
+
+                <Button
+                    android:id="@+id/remove_photo_button"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{viewModel.uiState.tempDetails.imageUri != null &amp;&amp; viewModel.uiState.editing}"
+                    android:text="@string/remove_product_image"
+                    app:layout_constraintBottom_toBottomOf="@id/product_image"
+                    app:layout_constraintEnd_toEndOf="@id/product_number_field"
+                    app:layout_constraintTop_toBottomOf="@id/add_photo_button" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/product_number_field"
+                    style="?attr/textInputOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_large"
+                    android:layout_marginBottom="@dimen/padding_small"
+                    android:hint="@string/product_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_image"
+                    app:layout_constraintWidth_max="@dimen/max_text_field_width">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="@{viewModel.uiState.editing}"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:text="@{viewModel.uiState.editing ? viewModel.uiState.tempDetails.productNumber : viewModel.uiState.productDetails.productNumber}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/product_name_field"
+                    style="?attr/textInputOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/padding_small"
+                    android:hint="@string/product_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_number_field"
+                    app:layout_constraintWidth_max="@dimen/max_text_field_width">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="@{viewModel.uiState.editing}"
+                        android:inputType="text"
+                        android:maxWidth="@dimen/max_text_field_width"
+                        android:maxLines="1"
+                        android:text="@{viewModel.uiState.editing ? viewModel.uiState.tempDetails.productName : viewModel.uiState.productDetails.productName}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/product_price_field"
+                    style="?attr/textInputOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/padding_small"
+                    android:hint="@string/product_price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_name_field"
+                    app:layout_constraintWidth_max="@dimen/max_text_field_width">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="@{viewModel.uiState.editing}"
+                        android:inputType="numberDecimal"
+                        android:maxWidth="@dimen/max_text_field_width"
+                        android:maxLines="1"
+                        android:text="@{viewModel.uiState.editing ? viewModel.uiState.tempDetails.price : viewModel.uiState.productDetails.price}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/product_stock_field"
+                    style="?attr/textInputOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/padding_small"
+                    android:hint="@string/product_stock"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_price_field"
+                    app:layout_constraintWidth_max="@dimen/max_text_field_width">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="@{viewModel.uiState.editing}"
+                        android:inputType="number"
+                        android:text="@{viewModel.uiState.editing ? viewModel.uiState.tempDetails.stock : viewModel.uiState.productDetails.stock}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

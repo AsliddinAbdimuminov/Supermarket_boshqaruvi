@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Filled"
+        app:cardBackgroundColor="?attr/colorTertiaryContainer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_medium">
+
+            <ImageView
+                android:layout_width="@dimen/icon_extra_large"
+                android:layout_height="@dimen/icon_extra_large"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/padding_extra_small"
+                android:contentDescription="@string/out_of_stock_icon_content_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/baseline_block_24"
+                app:tint="?attr/colorOnTertiaryContainer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/out_of_stock_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/padding_small"
+                android:text="@string/home_out_of_stock"
+                android:textSize="16sp"
+                app:tint="?attr/colorOnTertiaryContainer" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

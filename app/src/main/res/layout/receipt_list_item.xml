@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="productWithAmount"
+            type="com.mobile_programming.sari_sari_inventory_app.ui.scanner.ProductWithAmount" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/inventory_item_card_height"
+        android:layout_marginHorizontal="@dimen/padding_medium"
+        android:layout_marginVertical="@dimen/padding_extra_small"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        app:cardCornerRadius="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/padding_medium"
+            android:paddingVertical="@dimen/padding_small">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/productImage"
+                android:layout_width="@dimen/inventory_item_image_width"
+                android:layout_height="@dimen/inventory_item_image_width"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/no_product_image"
+                android:padding="@dimen/padding_small"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_no_image_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+
+            <TextView
+                android:id="@+id/productName"
+                style="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productWithAmount.productDetails.productName}"
+                app:layout_constraintEnd_toStartOf="@id/descriptionEndGuideline"
+                app:layout_constraintStart_toEndOf="@id/descriptionStartGuideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/productNumber"
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productWithAmount.productDetails.productNumber != null ? productWithAmount.productDetails.productNumber : @string/no_product_number}"
+                app:layout_constraintEnd_toStartOf="@id/descriptionEndGuideline"
+                app:layout_constraintStart_toEndOf="@id/descriptionStartGuideline"
+                app:layout_constraintTop_toBottomOf="@id/productName" />
+
+            <Button
+                android:id="@+id/remove_button"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"
+                android:contentDescription="@string/remove_product_from_receipt_content_desc"
+                app:icon="@drawable/baseline_remove_24"
+                app:iconGravity="textStart"
+                app:iconSize="@dimen/icon_small"
+                app:iconTint="?attr/colorError"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/negative_padding_extra_small"
+                android:layout_marginEnd="@dimen/negative_padding_medium"
+                android:layout_marginBottom="@dimen/negative_padding_small"
+                android:background="?attr/colorSurfaceVariant"
+                android:paddingVertical="@dimen/padding_extra_small"
+                android:paddingStart="@dimen/padding_extra_small"
+                android:paddingEnd="@dimen/padding_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/descriptionStartGuideline">
+
+                <TextView
+                    android:id="@+id/product_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingEnd="@dimen/padding_medium"
+                    android:text="@string/product_amount"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/product_sub_total"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent="0.4"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/product_sub_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="@string/product_sub_total"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    app:layout_constraintBaseline_toBaselineOf="@id/product_amount"
+                    app:layout_constraintStart_toEndOf="@id/product_amount"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/descriptionStartGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/inventory_item_card_height" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/descriptionEndGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">Supermarket</string>
+
+    <string name="product_image">%s tasviri</string>
+    <string name="product_number">Mahsulot raqami</string>
+    <string name="product_name">Mahsulot nomi</string>
+    <string name="product_price">Narxi</string>
+    <string name="product_stock">Omborda mavjud</string>
+    <string name="amount">Miqdori</string>
+
+    <string name="scan_barcode">Shtrix-kodni skanerlash</string>
+    <string name="search_manually">yoki qo\'lda qidirish</string>
+
+    <string name="add_to_stock">Stokga qo\'shish</string>
+    <string name="add_to_receipt">Kvitansiyaga qo\'shish</string>
+    <string name="add_new_product">Yangi mahsulot qo\'shish</string>
+
+    <string name="new_product_dialog_message">
+        Skanerlangan shtrix-kodda mavjud yozuvlar mavjud emas.
+        Yangisini yaratmoqchimisiz?
+    </string>
+
+    <string name="clear">Tozalash</string>
+    <string name="confirm">Tasdiqlang</string>
+    <string name="cancel">Bekor qilish</string>
+    <string name="edit">Tahrirlash</string>
+    <string name="save">Saqlash</string>
+
+    <string name="save_edit_content_desc">O\'zgarishlarni saqlang</string>
+    <string name="cancel_edit_content_desc">O\'zgarishlarni bekor qilish</string>
+    <string name="edit_content_desc">Mahsulot tafsilotlarini tahrirlash</string>
+
+    <string name="error_duplicate">%1$s noyob bo\‘lishi kerak.</string>
+    <string name="error_field_required">Maydonni kiritish shart.</string>
+    <string name="error_maximum_exceeded">Qiymat %1$s dan oshmasligi kerak.</string>
+    <string name="error_minimum_not_reached">Qiymat %1$s dan ortiq boʻlishi kerak.</string>
+
+    <string name="receipt">Kvitansiya</string>
+    <string name="inventory">Mahsulotlar boshqaruvi</string>
+    <string name="home">Bosh sahifa</string>
+    <string name="sell">Sotish</string>
+    <string name="settings">Sozlamalar</string>
+    <string name="new_product">Yangi mahsulot</string>
+
+    <string name="no_image">Hech qanday rasm topilmadi</string>
+    <string name="delete">O\ʻchirish</string>
+
+    <string name="delete_confirmation_title">Mahsulotni o\'chirish</string>
+    <string name="delete_confirmation_message">
+        Bu mahsulotni o\ʻchirib tashlamoqchimisiz?
+        Bu amalni bekor qila olmaysiz.
+    </string>
+
+    <string name="no_product_image">Bo\'sh mahsulot tasviri</string>
+    <string name="non_existing_product">Mahsulot mavjud emas</string>
+    <string name="no_product_number">Mahsulot raqami yo\'q</string>
+    <string name="inventory_search_hint">Mahsulot nomi yoki raqamini qidiring</string>
+    <string name="inventory_search_content_desc">Mahsulot nomi yoki raqamini qidiring</string>
+    <string name="search_bar_clear_content_desc">Qidiruv matnini tozalash</string>
+
+    <string name="sort_by">Saralash turi</string>
+    <string name="sort_menu_content_description">Saralash turi menyusi</string>
+
+    <string name="sort_by_product_name">Mahsulot nomi bo\'yicha</string>
+    <string name="sort_by_product_number">Mahsulot raqami bo\'yicha</string>
+    <string name="sort_by_product_price">Narx bo\'yicha</string>
+    <string name="sort_by_product_stock">Joylashishi bo\'yicha</string>
+
+    <string name="new_product_fab_content_desc">Yangi mahsulot qo\'shing</string>
+    <string name="delete_product_content_desc">%s ni o\'chirish</string>
+    <string name="new_product_image_content_desc">Mahsulot tasviri</string>
+
+    <string name="add_product_image">Rasmni tanlang</string>
+    <string name="remove_product_image">Rasmni o\'chirish</string>
+    <string name="change_product_image">Rasmni o\'zgartirish</string>
+
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galereya</string>
+    <string name="photos_and_images">Rasmlar va rasmlar</string>
+
+    <string name="permission_required_toast">%s ruxsati kerak.</string>
+    <string name="new_product_added">Yangi mahsulot muvaffaqiyatli qo\'shildi!</string>
+    <string name="product_stock_updated">Mahsulot zaxirasi yangilandi!</string>
+    <string name="product_added_to_receipt">Mahsulot kvitansiyaga qo\'shildi!</string>
+    <string name="product_details_updated">Mahsulot tafsilotlari yangilandi!</string>
+    <string name="product_deleted">Mahsulot tafsilotlari yangilandi!</string>
+
+    <string name="top_app_bar_navigate_up_content_desc">Orqaga o\'tish</string>
+    <string name="flip_camera_content_description">Kameraga qaytish</string>
+    <string name="scanner_no_camera_access">
+        Shtrix-kod skaneri mavjud emas. \n
+        Foydalanish uchun ilova sozlamalarida kameraga kirishni yoqing. \n
+        Ilova sozlamalari > Ruxsatlar > Kamera
+    </string>
+
+    <string name="receipt_total">Jami: &lt;b>%s&lt;/b></string>
+    <string name="product_sub_total">Qo\'shimcha jami: &lt;b>%s&lt;/b></string>
+    <string name="product_amount">Miqdori: &lt;b>%s&lt;/b></string>
+    <string name="remove_product_from_receipt_content_desc">Kvitansiyadan %s olib tashlang</string>
+
+    <string name="clear_receipt_dialog_title">Kvitansiyani tozalash</string>
+    <string name="clear_receipt_dialog_message">Bu amalni ortga qaytarib bo\‘lmaydi.</string>
+
+    <string name="confirm_sale_dialog_title">Sotishni tasdiqlang</string>
+    <string name="confirm_sale_dialog_message">
+        Agar tasdiqlansa, sotuv qayd qilinadi.
+        Bu chekni ham tozalaydi.
+    </string>
+    <string name="sale_confirmed">Sotish muvaffaqiyatli!</string>
+
+    <string name="low_on_stock_icon_content_description">Supermarket ko\'rsatkichi past</string>
+    <string name="out_of_stock_icon_content_description">Supermarketda yo\'q ko\'rsatkichi</string>
+    <string name="home_low_on_stock">
+        Kam qolgan mahsulot: &lt;br>
+        Soni: &lt;b>%d&lt;/b>
+    </string>
+    <string name="home_out_of_stock">
+        Mahsulot tugadi: &lt;br>
+        Soni: &lt;b>%d&lt;/b>
+    </string>
+
+    <string name="sort_by_sold">Sotilgan soni bo\'yicha</string>
+    <string name="sort_by_profit">Olingan foyda bo\'yicha</string>
+
+    <string name="appearance">Tashqi ko\'rinish</string>
+    <string name="enable_dark_mode_description">Qorong\'i mavzuni yoqing</string>
+</resources>
