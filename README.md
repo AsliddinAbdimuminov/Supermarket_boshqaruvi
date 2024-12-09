@@ -1,4 +1,4 @@
-# Zahira
+# Supermarket boshqaruvi
 
 Supermarket - Android uchun supermarket xodimi uchun mahsulot boshqaruvi ilovasi
 
